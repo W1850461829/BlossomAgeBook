@@ -97,4 +97,6 @@ dependencies {
     implementation rootProject.ext.dependencies.multidex
     api rootProject.ext.dependencies.arouter_api
 
+    api rootProject.ext.dependencies.okhttputils
+    api rootProject.ext.dependencies.fastjson
 }

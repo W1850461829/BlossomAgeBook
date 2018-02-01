@@ -37,8 +37,9 @@ ext {
             eventbus = "3.0.0",
             support_v4 = "26.1.0",
             okhttp3 = "3.3.1",
-            multidex = "1.0.1"
-
+            multidex = "1.0.1",
+            okhttputils = "2.6.2",
+            fastjson = "1.2.9"
     ]
 
     dependencies = [
@@ -74,8 +75,9 @@ ext {
             multidex                  : "com.android.support:multidex:$rootProject.multidex",
 //路由通讯
             arouter_api               : "com.alibaba:arouter-api:$rootProject.arouter_api",
-            arouter_compiler          : "com.alibaba:arouter-compiler:$rootProject.arouter_compiler"
+            arouter_compiler          : "com.alibaba:arouter-compiler:$rootProject.arouter_compiler",
 
-
+            okhttputils               : "com.zhy:okhttputils:$rootProject.okhttputils",
+            fastjson                  : "com.alibaba:fastjson:$rootProject.fastjson"
     ]
 }

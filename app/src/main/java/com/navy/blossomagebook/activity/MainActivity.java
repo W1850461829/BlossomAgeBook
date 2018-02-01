@@ -1,4 +1,4 @@
-package com.navy.blossomagebook;
+package com.navy.blossomagebook.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,8 +13,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import com.navy.blossomagebook.R;
+import com.navy.blossomagebook.presenter.MainPresenter;
+import com.navy.blossomagebook.view.MainResultView;
+import com.navy.commonlibrary.mvp.base.BaseActivity;
+import com.navy.commonlibrary.mvp.base.BasePresenter;
+import com.navy.commonlibrary.mvp.base.BaseView;
+import com.navy.commonlibrary.mvp.http.ResponseBean;
+
+public class MainActivity extends BaseActivity<MainResultView,MainPresenter>
+        implements NavigationView.OnNavigationItemSelectedListener,MainResultView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,8 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -61,12 +71,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -77,11 +82,9 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -97,5 +100,20 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    @Override
+    public MainPresenter createPresenter() {
+        return new MainPresenter();
+    }
+
+    @Override
+    public MainResultView createView() {
+        return this;
+    }
+
+
+    @Override
+    public void loginResult(ResponseBean responseBean) {
+
     }
 }

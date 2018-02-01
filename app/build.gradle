@@ -26,4 +26,14 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    if (rootProject.ext.isAlone) {
+        //当isDebug true，app得依赖基础库，保证app不报错
+        compile project(':commonlibrary')
+    } else {
+        compile project(':books_module')
+        compile project(':homepage_module')
+        compile project(':personage_module')
+    }
+
 }
