@@ -15,16 +15,10 @@ import com.navy.commonlibrary.mvp.http.ResponseBean;
  * Created by Administrator on 2017/11/30.
  */
 
-public class MainFragment extends BaseFragment<LoginView, LoginPresenter> implements LoginView{
+public class MainFragment extends BaseFragment<LoginView, LoginPresenter> implements LoginView {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_fragment_layout, container, false);
     }
 
     @Override
@@ -49,6 +43,11 @@ public class MainFragment extends BaseFragment<LoginView, LoginPresenter> implem
     @Override
     public LoginView createView() {
         return this;
+    }
+
+    @Override
+    public int getContentLayout() {
+        return R.layout.main_fragment_layout;
     }
 
     @Override

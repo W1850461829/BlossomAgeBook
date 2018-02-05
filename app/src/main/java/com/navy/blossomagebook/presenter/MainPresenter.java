@@ -33,4 +33,5 @@ public class MainPresenter extends BasePresenter<MainResultView> {
         }
 
     }
+
 }
