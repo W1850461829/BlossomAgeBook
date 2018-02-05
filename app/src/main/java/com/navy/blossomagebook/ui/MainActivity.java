@@ -24,16 +24,18 @@ import butterknife.BindView;
 
 public class MainActivity extends BaseActivity<MainResultView, MainPresenter>
         implements NavigationView.OnNavigationItemSelectedListener, MainResultView {
-
-    private FragmentManager fragmentManager;
     private HomeFragment homeFragment;
     private BookFragment bookFragment;
     private PersonageFragment personageFragment;
+
+    private static final int FRAGMENT_HOME = 0;
+    private static final int FRAGMENT_BOOK = 1;
+    private static final int FRAGMENT_PERSONAGE = 2;
+
     @BindView(R.id.fl_container)
     FrameLayout frameLayout;
-    private BottomNavigationView bottomNavigationView;
-    /*  @BindView(R.id.bviv_bar)
-    BottomNavigationView bottomNavigationView;*/
+    @BindView(R.id.bviv_bar)
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +43,8 @@ public class MainActivity extends BaseActivity<MainResultView, MainPresenter>
         setContentView(R.layout.activity_main);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        fragmentManager = getSupportFragmentManager();
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bviv_bar);
+        showFragment(FRAGMENT_HOME);
         setListener();
     }
 
@@ -52,17 +54,17 @@ public class MainActivity extends BaseActivity<MainResultView, MainPresenter>
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_item_home:
-                        showFragment(1);
-                        break;
+                        showFragment(FRAGMENT_HOME);
+                        return true;
                     case R.id.menu_item_book:
-                        showFragment(2);
-                        break;
+                        showFragment(FRAGMENT_BOOK);
+                        return true;
                     case R.id.menu_item_personal:
-                        showFragment(3);
-                        break;
+                        showFragment(FRAGMENT_PERSONAGE);
+                        return true;
 
                 }
-                return true;
+                return false;
             }
         });
     }
@@ -110,18 +112,20 @@ public class MainActivity extends BaseActivity<MainResultView, MainPresenter>
      * 显示fragment
      */
     public void showFragment(int index) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         hideFragment(fragmentTransaction);/*想要显示一个fragment,先隐藏所有fragment，防止重叠*/
         switch (index) {
-            case 3:
-                if (personageFragment != null)
-                    fragmentTransaction.show(personageFragment);
+            case FRAGMENT_HOME:
+                if (homeFragment != null)
+                    fragmentTransaction.show(homeFragment);
                 else {
-                    personageFragment = new PersonageFragment();
-                    fragmentTransaction.add(R.id.fl_container, personageFragment);
+                    homeFragment = new HomeFragment();
+                    fragmentTransaction.add(R.id.fl_container, homeFragment);
                 }
                 break;
-            case 2:
+
+            case FRAGMENT_BOOK:
                 /*如果fragment1已经存在则将其显示出来*/
                 if (bookFragment != null)
                     fragmentTransaction.show(bookFragment);
@@ -131,17 +135,16 @@ public class MainActivity extends BaseActivity<MainResultView, MainPresenter>
                     fragmentTransaction.add(R.id.fl_container, bookFragment);
                 }
                 break;
-            case 1:
-                if (homeFragment != null)
-                    fragmentTransaction.show(homeFragment);
+            case FRAGMENT_PERSONAGE:
+                if (personageFragment != null)
+                    fragmentTransaction.show(personageFragment);
                 else {
-                    homeFragment = new HomeFragment();
-                    fragmentTransaction.add(R.id.fl_container, homeFragment);
+                    personageFragment = new PersonageFragment();
+                    fragmentTransaction.add(R.id.fl_container, personageFragment);
                 }
                 break;
-
         }
-        fragmentTransaction.commitAllowingStateLoss();
+        fragmentTransaction.commit();
     }
 
     /**
