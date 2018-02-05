@@ -17,6 +17,8 @@ import com.navy.blossomagebook.view.MainResultView;
 import com.navy.books_module.ui.BookFragment;
 import com.navy.commonlibrary.mvp.base.BaseActivity;
 import com.navy.commonlibrary.mvp.http.ResponseBean;
+import com.navy.commonlibrary.router.RouterConstants;
+import com.navy.commonlibrary.router.RouterUtils;
 import com.navy.homepage_module.ui.HomeFragment;
 import com.navy.personage_module.ui.PersonageFragment;
 
@@ -120,6 +122,7 @@ public class MainActivity extends BaseActivity<MainResultView, MainPresenter>
                 if (homeFragment != null)
                     fragmentTransaction.show(homeFragment);
                 else {
+                    homeFragment = (HomeFragment) RouterUtils.navigation(RouterConstants.HOME_MODULE_FRAGMENT);
                     homeFragment = new HomeFragment();
                     fragmentTransaction.add(R.id.fl_container, homeFragment);
                 }
@@ -131,7 +134,7 @@ public class MainActivity extends BaseActivity<MainResultView, MainPresenter>
                     fragmentTransaction.show(bookFragment);
                 /*否则是第一次切换则添加fragment1，注意添加后是会显示出来的，replace方法也是先remove后add*/
                 else {
-                    bookFragment = new BookFragment();
+                    bookFragment = (BookFragment) RouterUtils.navigation(RouterConstants.BOOK_MODULE_FRAGMENT);
                     fragmentTransaction.add(R.id.fl_container, bookFragment);
                 }
                 break;
@@ -139,7 +142,7 @@ public class MainActivity extends BaseActivity<MainResultView, MainPresenter>
                 if (personageFragment != null)
                     fragmentTransaction.show(personageFragment);
                 else {
-                    personageFragment = new PersonageFragment();
+                    personageFragment = (PersonageFragment) RouterUtils.navigation(RouterConstants.PERSONAGE_MODULE_FRAGMENT);
                     fragmentTransaction.add(R.id.fl_container, personageFragment);
                 }
                 break;
