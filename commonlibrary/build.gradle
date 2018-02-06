@@ -91,7 +91,7 @@ dependencies {
     }
     api rootProject.ext.dependencies.retrofit_converter_scalars
     annotationProcessor rootProject.ext.dependencies.dagger2_compiler
-    annotationProcessor rootProject.ext.dependencies.butterknife_compiler
+   // annotationProcessor rootProject.ext.dependencies.butterknife_compiler
     compile rootProject.ext.dependencies.butterknife
     api rootProject.ext.dependencies.transformations
     implementation rootProject.ext.dependencies.multidex

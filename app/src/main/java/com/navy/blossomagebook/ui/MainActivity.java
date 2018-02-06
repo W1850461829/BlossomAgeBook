@@ -25,7 +25,7 @@ import com.navy.personage_module.ui.PersonageFragment;
 import butterknife.BindView;
 
 public class MainActivity extends BaseActivity<MainResultView, MainPresenter>
-        implements NavigationView.OnNavigationItemSelectedListener, MainResultView {
+        implements NavigationView.OnNavigationItemSelectedListener, MainResultView, HomeFragment.OnOpenDrawerLayoutListener {
     private HomeFragment homeFragment;
     private BookFragment bookFragment;
     private PersonageFragment personageFragment;
@@ -38,6 +38,8 @@ public class MainActivity extends BaseActivity<MainResultView, MainPresenter>
     FrameLayout frameLayout;
     @BindView(R.id.bviv_bar)
     BottomNavigationView bottomNavigationView;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,6 @@ public class MainActivity extends BaseActivity<MainResultView, MainPresenter>
         setContentView(R.layout.activity_main);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bviv_bar);
         showFragment(FRAGMENT_HOME);
         setListener();
     }
@@ -89,7 +90,6 @@ public class MainActivity extends BaseActivity<MainResultView, MainPresenter>
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -160,5 +160,12 @@ public class MainActivity extends BaseActivity<MainResultView, MainPresenter>
             ft.hide(bookFragment);
         if (personageFragment != null)
             ft.hide(personageFragment);
+    }
+
+    @Override
+    public void onOpen() {
+        if (!drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.openDrawer(GravityCompat.START);
+        }
     }
 }

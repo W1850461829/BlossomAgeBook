@@ -27,4 +27,14 @@ public class PersonageFragment extends BaseFragment {
     public int getContentLayout() {
         return R.layout.personage_fragment_main;
     }
+
+    @Override
+    protected void initTop() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
 }

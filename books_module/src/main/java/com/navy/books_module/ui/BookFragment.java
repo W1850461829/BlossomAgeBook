@@ -27,5 +27,15 @@ public class BookFragment extends BaseFragment {
     public int getContentLayout() {
         return R.layout.book_fragment_main;
     }
+
+    @Override
+    protected void initTop() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
 }
 

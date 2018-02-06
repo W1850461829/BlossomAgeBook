@@ -40,6 +40,8 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         if (presenter != null && view != null) {
             presenter.attachView(view);
         }
+        initTop();
+        initData();
     }
 
 
@@ -61,4 +63,8 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
     public abstract V createView();
 
     public abstract int getContentLayout();
+
+    protected abstract void initTop();
+
+    protected abstract void initData();
 }

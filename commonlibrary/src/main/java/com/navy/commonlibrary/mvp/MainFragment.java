@@ -51,6 +51,16 @@ public class MainFragment extends BaseFragment<LoginView, LoginPresenter> implem
     }
 
     @Override
+    protected void initTop() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
     public void loginResult(ResponseBean responseBean) {
 
     }
