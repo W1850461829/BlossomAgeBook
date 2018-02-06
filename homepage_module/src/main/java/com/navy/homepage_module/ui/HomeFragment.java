@@ -2,8 +2,11 @@ package com.navy.homepage_module.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.navy.commonlibrary.mvp.base.BaseFragment;
@@ -16,6 +19,7 @@ import com.navy.homepage_module.R2;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2018/2/5.
@@ -61,7 +65,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void initTop() {
         toolbar.setTitle("首页");
-        //toolbar.setNavigationIcon(R.mipmap.);
+        toolbar.setNavigationIcon(R.mipmap.home_menu);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

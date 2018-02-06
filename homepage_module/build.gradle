@@ -71,6 +71,6 @@ dependencies {
     if (!rootProject.ext.isAlone) {
         annotationProcessor rootProject.ext.dependencies.arouter_compiler
     }
-    //butterknife
-    annotationProcessor rootProject.ext.butterknifeCompiler
+//butterknife
+    annotationProcessor rootProject.ext.dependencies.butterknife_compiler
 }

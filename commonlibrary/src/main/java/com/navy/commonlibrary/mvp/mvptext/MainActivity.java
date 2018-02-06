@@ -19,6 +19,21 @@ public class MainActivity extends BaseActivity<LoginView, LoginPresenter> implem
 
     }
 
+    @Override
+    protected void initUi() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected int getContentLayout() {
+        return 0;
+    }
+
     public void clickLogin(View view) {
 
         if (getPresenter() != null) {

@@ -24,7 +24,7 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getContentLayout(), container, false);
-        unbinder = ButterKnife.bind(getActivity(), view);
+        unbinder = ButterKnife.bind(this, view);
         return view;
     }
 

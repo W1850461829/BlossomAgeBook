@@ -19,6 +19,7 @@ public abstract class BaseActivity<V extends BaseView, P extends BasePresenter<V
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(getContentLayout());
         unbinder = ButterKnife.bind(this);
         if (presenter == null) {
             presenter = createPresenter();
@@ -29,8 +30,16 @@ public abstract class BaseActivity<V extends BaseView, P extends BasePresenter<V
         if (presenter != null && view != null) {
             presenter.attachView(view);
         }
-
+        initUi();
+        initData();
     }
+
+    protected abstract void initUi();
+
+    protected abstract void initData();
+
+    protected abstract int getContentLayout();
+
 
     public P getPresenter() {
         return presenter;

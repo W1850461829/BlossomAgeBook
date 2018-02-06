@@ -1,6 +1,5 @@
 package com.navy.blossomagebook.ui;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -42,13 +41,21 @@ public class MainActivity extends BaseActivity<MainResultView, MainPresenter>
     DrawerLayout drawer;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected void initUi() {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         showFragment(FRAGMENT_HOME);
         setListener();
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected int getContentLayout() {
+        return R.layout.activity_main;
     }
 
     private void setListener() {
